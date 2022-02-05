@@ -1,4 +1,5 @@
-const add = function(...numbers) {
+// Function operations
+const add = (...numbers) => {
 	
     let result = 0;
     
@@ -9,7 +10,7 @@ const add = function(...numbers) {
     return result;
 };
 
-const subtract = function(...numbers) {
+const subtract = (...numbers) => {
 	
     let result = 0;
     
@@ -21,7 +22,7 @@ const subtract = function(...numbers) {
   
 };
 
-const multiply = function(...numbers) {
+const multiply = (...numbers) => {
 	
     let result = 1;
     
@@ -34,7 +35,7 @@ const multiply = function(...numbers) {
 };
 
 // Takes the first number and calculates it's power to the rest of the numbers inputed.
-const power = function(...numbers) { 
+const power = (...numbers) => { 
 	// Takes the first number off the list and stores it in a new variable.
     const firstNumber = numbers.splice(0, 1);
     let multiplyTheRest = 1;
@@ -54,7 +55,7 @@ const power = function(...numbers) {
     return result;
 };
 
-const factorial = function(number) {
+const factorial = (number) => {
 	let result = 1;
   
   for(let i = 1; i <= number; i++) {
