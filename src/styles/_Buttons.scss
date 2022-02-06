@@ -1,3 +1,76 @@
 .Buttons {
-    
+    background-color: var(--toggle-and-keypad-background);
+    width: 85%;
+    border-radius: .6rem;
+
+    &__container {
+        display: grid;
+        gap: .8rem;
+        grid-template-columns: repeat(4, 1fr);
+        padding: 1.5rem;
+    }
+
+    &__button {
+        color: var(--text-color-2);
+        padding: 1rem;
+        background-color: var(--key-background-3);
+        font-size: var(--number-font-size);
+        box-shadow: 0 .2rem var(--key-shadow-3);
+
+        // Specific keys positioning
+        &[data-key="0"] {
+            grid-row: 4;
+            grid-column: 2;
+        }
+
+        &[data-key="="] {
+            grid-row: 5;
+            grid-column: 2/5;
+        }
+
+        &[data-key="."] {
+            grid-row: 4;
+            grid-column: 1;
+        }
+
+        &[data-key="+"] {
+            grid-row: 1;
+            grid-column: 4;
+        }
+
+        &[data-key="-"] {
+            grid-row: 2;
+            grid-column: 4;
+        }
+
+        &[data-key="x"] {
+            grid-row: 3;
+            grid-column: 4;
+        }
+
+        &[data-key="÷"] {
+            grid-row: 4;
+            grid-column: 4;
+        }
+
+        &__opt {
+            background-color: var(--key-background-1);
+            color: var(--text-color-1);
+            box-shadow: 0 .2rem var(--key-shadow-1);
+        }
+
+        &__rect {
+            background-color: var(--key-background-2);
+            grid-column: span 2;
+            color: var(--text-color-1);
+            box-shadow: 0 .2rem var(--key-shadow-2);
+            grid-row: -1/-2;
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .Buttons {
+        max-width: 30%;
+    }
 }
