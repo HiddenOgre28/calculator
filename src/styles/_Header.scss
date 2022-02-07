@@ -3,6 +3,21 @@
     width: 85%;
     margin-top: 2rem;
     color: var(--text-color-1);
+
+    &__title {
+        margin-left: .5rem;
+    }
+
+    &__settings {
+        width: 6%;
+        margin-right: .5rem;
+
+        &:hover {
+            cursor: pointer;
+            transition: 500ms;
+            transform: rotate(360deg);
+        }
+    }
 }
 
 @media screen and (min-width: 1024px) {
