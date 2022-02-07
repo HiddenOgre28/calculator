@@ -5,10 +5,21 @@
     font-size: var(--number-font-size);
     padding: 1rem;
     border-radius: .6rem;
+    overflow-wrap: break-word;
 
-    &__span {
+    &__result {
+        font-size: 1rem;
+        color: var(--key-shadow-3);
+    }
+
+    &__operator {
         color: var(--text-color-1);
     }
+}
+
+span{
+    display: block;
+    padding-block: .2rem;
 }
 
 @media screen and (min-width: 1024px) {
