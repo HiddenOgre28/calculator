@@ -14,6 +14,7 @@ const App = () => {
       <Display />
       <Buttons />
       <Footer />
+      <Settings />
     </div>
   );
 };
