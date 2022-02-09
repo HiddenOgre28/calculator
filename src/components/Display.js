@@ -1,13 +1,15 @@
 import React from 'react';
 
-const Display = () => {
+const Display = ({calc, result}) => {
   return (
     <div className="Display">
-      <span className='Display__result' tabIndex="2">
-        (125456)
-      </span>
+      {(result !== "") ? <span className='Display__result' tabIndex="2">
+        {result}
+      </span> : <span className='Display__result' tabIndex="2">
+        0
+      </span> }
       <span className='Display__operator' tabIndex="1">
-        125321451123654895223
+        {calc || "0"}
       </span>
     </div>
   );

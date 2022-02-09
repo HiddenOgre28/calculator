@@ -1,6 +1,16 @@
 import React from "react";
 
-const Buttons = () => {
+const Buttons = ({updateCalc, calculateResult, deleteDigit, resetCalc}) => {
+  const handleClick = (e) => {
+    updateCalc(`${e}`)
+  };
+
+  const handleKeyPress = (e) => {
+    if(e.key) {
+      updateCalc(`${e.key}`)
+    }
+  };
+
   const createDigitButtons = (numOfButtons) => {
     const buttons = [];
 
@@ -10,6 +20,7 @@ const Buttons = () => {
           className="Buttons__button Buttons__button__digits"
           key={i} 
           data-key={i}
+          onClick={() => handleClick(i)}
         >
           {i}
         </button>
@@ -20,7 +31,7 @@ const Buttons = () => {
   };
 
   const createOperatorButtons = () => {
-    const operator = ["DEL", "RESET", "+", "-", "x", "÷", ".", "^", "!", "="];
+    const operator = ["DEL", "RESET", "+", "-", "*", "/", ".", "^", "!", "="];
     const buttons = [];
 
     operator.forEach((operator, index) =>
@@ -33,6 +44,9 @@ const Buttons = () => {
           }
           key={index}
           data-key={operator}
+          onClick={operator === "=" ? calculateResult : 
+            operator === "DEL" ? deleteDigit : 
+            operator === "RESET" ? resetCalc : () => handleClick(operator)}
         >
           {operator}
         </button>
