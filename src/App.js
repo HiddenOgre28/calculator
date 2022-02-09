@@ -10,6 +10,7 @@ const App = () => {
   // States
   const [calc, setCalc] = useState("");
   const [result, setResult] = useState("");
+  const [sidebar, setSidebar] = useState(false);
 
   const operators = ["+", "-", "/", "*", "^", "!", "."];
 
@@ -50,10 +51,11 @@ const App = () => {
   // Returned UI
   return (
     <div className="App">
-      <Header />
+      <Header sidebar={sidebar} setSidebar={setSidebar} />
       <Display calc={calc} result={result} />
       <Buttons updateCalc={updateCalc} calculateResult={calculateResult} deleteDigit={deleteDigit} resetCalc={resetCalc} />
       <Footer />
+      <Settings sidebar={sidebar}/>
     </div>
   );
 };

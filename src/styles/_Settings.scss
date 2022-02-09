@@ -1,0 +1,120 @@
+.Settings {
+    @include flexContainer(column, center, center, 3rem);
+    position: fixed;
+    top: 0;
+    right: 0;
+    min-width: 23rem;
+    background-color: var(--display-background);
+    min-height: 100vh;
+    color: var(--text-color-1);
+    z-index: 999;
+    text-transform: uppercase;
+    letter-spacing: .1rem;  
+    transform: translateX(100%) translateY(-100%);   
+    
+
+    &__theme {
+        @include flexContainer(column, center, center, .5rem);
+        width: 5rem;
+
+        &__title {
+            font-size: 1.2rem;
+            padding-block: .5rem;
+        }
+
+        &__picks {
+            @include flexContainer(row, center, center, 1.3rem);
+
+            & > span {
+                font-size: .9rem;
+            }
+        }
+
+        &__slider {
+            cursor: pointer;
+            width: 100%;
+            min-height: 1.2rem;
+            -webkit-appearance: none;
+            border-radius: 10rem;
+            background-color: var(--key-background-1);
+
+            &::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: .8rem;
+                height: .8rem;
+                border-radius: 50%;
+                background-color: var(--key-background-2);
+            }
+
+            &::-moz-range-thumb {
+                width: 1rem;
+                height: 1rem;
+                margin: .2rem;
+                margin-inline-end: .2rem;
+                border-radius: 50%;
+                background-color: var(--key-background-2);   
+            }
+        }
+    }
+
+    &__sound{
+        @include flexContainer(row, center, center, .5rem);
+        min-height: 5rem;
+        width: 100%;
+
+        &__btn{
+            @include flexContainer(row, center, center, .5rem);
+            color: var(--text-color-1);
+
+            &:active {
+                transform: translateY(0);
+            }
+        }
+
+        &__img {
+            width: 2rem;
+        }
+    }
+}
+
+.Settings--visible {
+    @extend .Settings;
+
+    animation-name: stretch;
+    animation-duration: 1.5s; 
+    animation-timing-function: ease-in; 
+    animation-fill-mode: both;
+    animation-delay: 0;
+    
+  
+    @keyframes stretch {
+        0% {
+          border-radius: 100%;
+          transform: translateX(100%) translateY(-100%);    
+        }
+        100% {
+          transform: scale(1);
+        }
+    }
+}
+
+.Settings--hidden {
+    @extend .Settings;
+
+    animation-name: hide;
+    animation-duration: 1.5s; 
+    animation-timing-function: ease-out; 
+    animation-fill-mode: both;
+    animation-delay: 0;
+
+    @keyframes hide {
+        0% {
+          border-radius: 0%; 
+        }
+        100% {
+          border-radius: 100%; 
+          transform: translateX(100%) translateY(-100%);   
+        }
+    }
+}
