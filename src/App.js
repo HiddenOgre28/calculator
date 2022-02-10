@@ -12,6 +12,7 @@ const App = () => {
   const [calc, setCalc] = useState("");
   const [result, setResult] = useState("");
   const [sidebar, setSidebar] = useState(false);
+  const [sound, setSound] = useState(true);
 
   const updateCalc = (value) => {
     if (
@@ -58,9 +59,9 @@ const App = () => {
     <div className="App">
       <Header sidebar={sidebar} setSidebar={setSidebar} />
       <Display calc={calc} result={result} />
-      <Buttons updateCalc={updateCalc} calculateResult={calculateResult} deleteDigit={deleteDigit} resetCalc={resetCalc} />
+      <Buttons updateCalc={updateCalc} calculateResult={calculateResult} deleteDigit={deleteDigit} resetCalc={resetCalc} sound={sound} setSound={setSound} />
       <Footer />
-      <Settings sidebar={sidebar}/>
+      <Settings sidebar={sidebar} sound={sound} setSound={setSound}/>
     </div>
   );
 };
