@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./styles/App.scss";
-import {evaluate} from "./components/functions";
+import {evaluate, operators} from "./components/functions";
 import Header from "./components/Header";
 import Display from "./components/Display";
 import Buttons from "./components/Buttons";
@@ -12,8 +12,6 @@ const App = () => {
   const [calc, setCalc] = useState("");
   const [result, setResult] = useState("");
   const [sidebar, setSidebar] = useState(false);
-
-  const operators = ["+", "-", "/", "*", "^", "!", "."];
 
   const updateCalc = (value) => {
     if (
