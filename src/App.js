@@ -17,12 +17,16 @@ const App = () => {
 
   const updateCalc = (value) => {
     if (
-      (operators.includes(value) && calc === "") ||
-      (operators.includes(value) && operators.includes(calc.slice(-1))) ||
+      (operators.includes(value) &&  calc === "") ||
+      (operators.includes(value) && operators.includes([...calc][[...calc].length-1]) && [...calc][[...calc].length-1] !== "-") ||
       ([...calc][[...calc].length-1] === "!" && value !== "!")
     ) {
       return;
-    } 
+    }
+
+    if(value === "-" && [...calc][[...calc].length-2] === "-") {
+      return;
+    }
     
     setCalc(calc + value);
     
