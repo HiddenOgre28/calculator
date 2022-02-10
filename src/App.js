@@ -32,7 +32,7 @@ const App = () => {
     
 
     if(!operators.includes(value) || (operators.includes(value) && value === "!" )) {
-      setResult(evaluate(calc + value));
+      setResult(evaluate(calc + value))
     }
   };
 
