@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import soundOn from "../assets/sound-on.svg";
 import soundOff from "../assets/sound-off.svg";
 
-const Settings = ({sidebar}) => {
-  const [sound, setSound] = useState(true);
+const Settings = ({sidebar, sound, setSound}) => {
 
   const component = document.getElementsByClassName("Settings");
 

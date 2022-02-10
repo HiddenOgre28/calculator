@@ -1,13 +1,53 @@
 import React from "react";
+import {operators, digits} from "./functions";
+import {Howl} from "howler";
+import keySound from "../assets/key-sound.mp3";
 
-const Buttons = ({updateCalc, calculateResult, deleteDigit, resetCalc}) => {
+const Buttons = ({updateCalc, calculateResult, deleteDigit, resetCalc, sound, setSound}) => {
+  const playSound = (src) => {
+    const sound = new Howl ({
+      src,
+      html5: true,
+    })
+
+    sound.play()
+  }
+  
   const handleClick = (e) => {
-    updateCalc(`${e}`)
+    updateCalc(`${e}`);
+    if(sound) {
+      playSound(keySound);
+    }
   };
 
   const handleKeyPress = (e) => {
-    if(e.key) {
+    if(operators.includes(e.key) || digits.includes(e.key)) {
       updateCalc(`${e.key}`)
+      if(sound) {
+        playSound(keySound);
+      }
+    }
+
+    if(e.key === "Enter") {
+      e.preventDefault();
+      calculateResult();
+      if(sound) {
+        playSound(keySound);
+      }
+    }
+
+    if(e.key === "Escape" || e.key === "Delete") {
+      resetCalc();
+      if(sound) {
+        playSound(keySound);
+      }
+    }
+
+    if(e.key === "Backspace") {
+      deleteDigit();
+      if(sound) {
+        playSound(keySound);
+      }
     }
   };
 
@@ -20,6 +60,7 @@ const Buttons = ({updateCalc, calculateResult, deleteDigit, resetCalc}) => {
           className="Buttons__button Buttons__button__digits"
           key={i} 
           data-key={i}
+          onKeyDown={handleKeyPress}
           onClick={() => handleClick(i)}
         >
           {i}
@@ -44,6 +85,7 @@ const Buttons = ({updateCalc, calculateResult, deleteDigit, resetCalc}) => {
           }
           key={index}
           data-key={operator}
+          onKeyDown={operator === "=" ? calculateResult : () => handleKeyPress()}
           onClick={operator === "=" ? calculateResult : 
             operator === "DEL" ? deleteDigit : 
             operator === "RESET" ? resetCalc : () => handleClick(operator)}

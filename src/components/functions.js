@@ -1,3 +1,6 @@
+const operators = ["+", "-", "/", "*", "^", "!", "."];
+const digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
 const add = (a, b) => {
   return a + b;
 };
@@ -82,4 +85,4 @@ const evaluate = (nums) => {
 }
 
 
-export {add, substract, divide, multiply, power, factorial, evaluate}
+export {add, substract, divide, multiply, power, factorial, evaluate, operators, digits};
