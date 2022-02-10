@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./styles/App.scss";
+import {evaluate} from "./components/functions";
 import Header from "./components/Header";
 import Display from "./components/Display";
 import Buttons from "./components/Buttons";
@@ -16,16 +17,22 @@ const App = () => {
 
   const updateCalc = (value) => {
     if (
-      (operators.includes(value) && calc === "") ||
-      (operators.includes(value) && operators.includes(calc.slice(-1)))
+      (operators.includes(value) &&  calc === "") ||
+      (operators.includes(value) && operators.includes([...calc][[...calc].length-1]) && [...calc][[...calc].length-1] !== "-") ||
+      ([...calc][[...calc].length-1] === "!" && value !== "!")
     ) {
       return;
-    } 
+    }
+
+    if(value === "-" && [...calc][[...calc].length-2] === "-") {
+      return;
+    }
     
     setCalc(calc + value);
+    
 
-    if(!operators.includes(value)) {
-      setResult(eval(calc + value));
+    if(!operators.includes(value) || (operators.includes(value) && value === "!" )) {
+      setResult(evaluate(calc + value));
     }
   };
 
