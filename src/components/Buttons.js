@@ -1,18 +1,8 @@
 import React from "react";
 import {operators, digits} from "./functions";
-import {Howl} from "howler";
 import keySound from "../assets/key-sound.mp3";
 
-const Buttons = ({updateCalc, calculateResult, deleteDigit, resetCalc, sound, setSound}) => {
-  const playSound = (src) => {
-    const sound = new Howl ({
-      src,
-      html5: true,
-    })
-
-    sound.play()
-  }
-  
+const Buttons = ({updateCalc, calculateResult, deleteDigit, resetCalc, sound, playSound}) => {
   const handleClick = (e) => {
     updateCalc(`${e}`);
     if(sound) {
@@ -23,31 +13,23 @@ const Buttons = ({updateCalc, calculateResult, deleteDigit, resetCalc, sound, se
   const handleKeyPress = (e) => {
     if(operators.includes(e.key) || digits.includes(e.key)) {
       updateCalc(`${e.key}`)
-      if(sound) {
-        playSound(keySound);
-      }
     }
 
     if(e.key === "Enter") {
       e.preventDefault();
       calculateResult();
-      if(sound) {
-        playSound(keySound);
-      }
     }
 
     if(e.key === "Escape" || e.key === "Delete") {
       resetCalc();
-      if(sound) {
-        playSound(keySound);
-      }
     }
 
     if(e.key === "Backspace") {
       deleteDigit();
-      if(sound) {
-        playSound(keySound);
-      }
+    }
+
+    if(sound) {
+      playSound(keySound);
     }
   };
 
