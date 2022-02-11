@@ -30,16 +30,10 @@ const App = () => {
       (operators.includes(value) &&  calc === "") ||
       (value === "!" &&  calc.length > 2) ||
       (operators.includes(value) && operators.includes([...calc][[...calc].length-1]) && [...calc][[...calc].length-1] !== "-") ||
-      ([...calc][[...calc].length-1] === "!" && value !== "!")
+      ([...calc][[...calc].length-1] === "!" && value !== "!" || 
+      ((value !== "-" && !digits.includes(value)) && [...calc][[...calc].length-1] === "-") ||
+      (value === "-" && [...calc][[...calc].length-2] === "-"))
     ) {
-      return;
-    }
-
-    if((value !== "-" && !digits.includes(value)) && [...calc][[...calc].length-1] === "-") {
-      return;
-    }
-
-    if(value === "-" && [...calc][[...calc].length-2] === "-") {
       return;
     }
     

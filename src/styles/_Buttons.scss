@@ -16,6 +16,7 @@
         background-color: var(--key-background-3);
         font-size: minmax(1vw, 32px);
         box-shadow: 0 .2rem var(--key-shadow-3);
+        align-items: center;
 
         // Specific keys positioning
         &[data-key="0"] {
