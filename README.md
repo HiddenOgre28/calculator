@@ -37,7 +37,7 @@ Users should be able to:
 - Live Site URL: [Live Site](https://elegant-elion-091f76.netlify.app/)
 
 ## My process
-You can read all about it in my latest blog post!
+You can read all about it in my [latest blog post!](https://dev.to/yasledesma/building-a-calculator-from-scratch-in-react-j8e)
 ### Built with
 
 - Semantic HTML5 markup

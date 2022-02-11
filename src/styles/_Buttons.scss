@@ -6,7 +6,7 @@
     &__container {
         display: grid;
         gap: .8rem;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, minmax(1.5rem, 1fr));
         padding: 1.5rem;
     }
 
@@ -14,7 +14,7 @@
         color: var(--text-color-2);
         padding: 1rem;
         background-color: var(--key-background-3);
-        font-size: var(--number-font-size);
+        font-size: minmax(1vw, 32px);
         box-shadow: 0 .2rem var(--key-shadow-3);
 
         // Specific keys positioning
