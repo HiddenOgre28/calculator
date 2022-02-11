@@ -11,8 +11,8 @@ import Settings from "./components/Settings";
 
 const App = () => {
   // States
-  const [calc, setCalc] = useState("");
-  const [result, setResult] = useState("");
+  const [calc, setCalc] = useState(() => "");
+  const [result, setResult] = useState(() => "");
   const [sidebar, setSidebar] = useState(false);
   const [sound, setSound] = useState(true);
 
@@ -28,25 +28,26 @@ const App = () => {
   const updateCalc = (value) => {
     if (
       (operators.includes(value) &&  calc === "") ||
+      (value === "!" &&  calc.length > 2) ||
       (operators.includes(value) && operators.includes([...calc][[...calc].length-1]) && [...calc][[...calc].length-1] !== "-") ||
       ([...calc][[...calc].length-1] === "!" && value !== "!")
     ) {
       return;
     }
 
-    if(value === "-" && [...calc][[...calc].length-2] === "-") {
-      return;
-    }
-
     if((value !== "-" && !digits.includes(value)) && [...calc][[...calc].length-1] === "-") {
       return;
     }
+
+    if(value === "-" && [...calc][[...calc].length-2] === "-") {
+      return;
+    }
     
-    setCalc(calc + value);
+    setCalc(() => calc + value);
     
 
     if(!operators.includes(value) || (operators.includes(value) && value === "!" )) {
-      setResult(evaluate(calc + value))
+      setResult(() => evaluate(calc + value))
     }
   };
 
@@ -57,7 +58,7 @@ const App = () => {
 
     const newValue = calc.slice(0, -1);
 
-    setCalc(newValue);
+    setCalc(() => newValue);
 
     if(sound) {
       playSound(keySound);
@@ -65,15 +66,15 @@ const App = () => {
   }
 
   const calculateResult = () => {
-    setCalc(result);
+    setCalc(() => result);
     if(sound) {
       playSound(keySound);
     }
   };
 
   const resetCalc = () => {
-    setCalc("");
-    setResult("");
+    setCalc(() => "");
+    setResult(() => "");
     if(sound) {
       playSound(keySound);
     }

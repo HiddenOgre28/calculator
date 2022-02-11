@@ -28,7 +28,7 @@ const Buttons = ({updateCalc, calculateResult, deleteDigit, resetCalc, sound, pl
       deleteDigit();
     }
 
-    if(sound) {
+    if(sound && (digits.includes(e.key) || operators.includes(e.key))) {
       playSound(keySound);
     }
   };
