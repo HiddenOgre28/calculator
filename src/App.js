@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./styles/App.scss";
-import {evaluate, operators} from "./components/functions";
+import {evaluate, operators, digits} from "./components/functions";
 import Header from "./components/Header";
 import Display from "./components/Display";
 import Buttons from "./components/Buttons";
@@ -24,6 +24,10 @@ const App = () => {
     }
 
     if(value === "-" && [...calc][[...calc].length-2] === "-") {
+      return;
+    }
+
+    if((value !== "-" && !digits.includes(value)) && [...calc][[...calc].length-1] === "-") {
       return;
     }
     
